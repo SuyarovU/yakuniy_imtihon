@@ -21,11 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-k%wj-yi3o%32)fo2h(^r24n0!ru6)f83tvi#y6gqek2m9$&@0y'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['165.22.71.53']
 
 
 # Application definition
@@ -119,6 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = "/var/www/yakuniy_imtihon/staticfiles"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -140,3 +140,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = "/var/www/yakuniy_imtihon/media"
