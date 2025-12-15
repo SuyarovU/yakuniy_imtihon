@@ -60,4 +60,13 @@ class OrderSerializer(serializers.ModelSerializer):
         return order
 
    
-    
+class RegisterRequestSerializer(serializers.Serializer):
+    phone = serializers.CharField()
+    name = serializers.CharField()
+    username = serializers.CharField()
+    password = serializers.CharField()
+ 
+class OrderCreateRequestSerializer(serializers.Serializer):
+    manzil = serializers.CharField()
+    promokod = serializers.CharField(required=False, allow_null=True)
+    items = OrderItemSerializer(many=True)

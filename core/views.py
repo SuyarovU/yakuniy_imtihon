@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .serializers import CustomUserSerializer, FoodInputSerializer, OrderItemSerializer, PromokodSerializer, OrderSerializer
+from .serializers import CustomUserSerializer, FoodInputSerializer, OrderItemSerializer, PromokodSerializer, OrderSerializer, RegisterRequestSerializer, OrderCreateRequestSerializer
 from rest_framework.response import Response
 from rest_framework.request import Request
 from .models import CustomUser, Food, Promokod, Order
@@ -18,7 +18,8 @@ class RegisterView(APIView):
     @extend_schema(
     tags=['Auth'],
     summary="Royxatdan o'tish uchun",
-    description="Foydalanuvchi ro'yxatdan o'tish uchun ma'lumotlarini kiritadi, va to'g'ri ma'lumot kiritsa bazaga saqlanadi")
+    description="Foydalanuvchi ro'yxatdan o'tish uchun ma'lumotlarini kiritadi, va to'g'ri ma'lumot kiritsa bazaga saqlanadi",
+    request=RegisterRequestSerializer)
     def post(self, request:Request):
         phone = request.data.get('phone')
         name = request.data.get('name')
@@ -96,7 +97,9 @@ class OrderCreateView(APIView):
     @extend_schema(
     tags=['Order'],
     summary="Buyurtma yaratish",
-    description="Kerakli ma'lumotlarni kiritib buyurtma yaratish uchun ishlatilinadi")
+    description="Kerakli ma'lumotlarni kiritib buyurtma yaratish uchun ishlatilinadi",
+    request=OrderCreateRequestSerializer,
+    responses=OrderSerializer)
     def post(self, request:Request):
         data = request.data.copy()
         promokod = data.get('promokod')
