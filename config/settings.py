@@ -121,6 +121,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = "/var/www/yakuniy_imtihon/staticfiles"
 
 REST_FRAMEWORK = {
+    
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),

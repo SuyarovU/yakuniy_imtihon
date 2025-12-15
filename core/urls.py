@@ -17,6 +17,6 @@ urlpatterns = [
     path('restaurant/token/', TokenObtainPairView.as_view()),
     path('restaurant/refresh/', TokenRefreshView.as_view()),
     path('restaurant/register/', views.RegisterView.as_view()),
-    path("restaurant/schema/",SpectacularAPIView.as_view(),name="schema"),
-    path("restaurant/docs/",SpectacularSwaggerView.as_view(),name='swagger-ui'),
+    path("auth/schema/",SpectacularAPIView.as_view(),name="schema"),
+    path("auth/docs/",SpectacularSwaggerView.as_view(),name='swagger-ui'),
 ]
