@@ -29,7 +29,7 @@ class OrderItemSerializer(serializers.Serializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    items = OrderItemSerializer(many=True, write_only=True)
+    items = OrderItemSerializer(many=True)
 
     class Meta:
         model = Order
@@ -59,5 +59,5 @@ class OrderSerializer(serializers.ModelSerializer):
             OrderItem.objects.create(food=food, count=item['count'], total_price = item['count']*food.price, order=order, )
         return order
 
-
+   
     
